@@ -1,4 +1,5 @@
 retronas_path: "/data/retronas"
+retronas_data: "/opt/retronas/data"
 retronas_user: "pi"
 retronas_group: "pi"
 retronas_root: "/opt/retronas"

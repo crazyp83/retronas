@@ -66,3 +66,5 @@ update_config "${OLDWIFINTP}"         "retronas_net_wifi_ntp"                   
 update_config "${OLDWIFIDNS}"         "retronas_net_wifi_dns"                     0
 # 2024-06-10
 update_config "${OLDW3DSQRIP}"        "retronas_net_3dsqr_interface"              0
+# 2024-09-08
+update_config "${OLDRDATAPATH}"       "retronas_data"                             0

@@ -5,6 +5,9 @@
 - hosts: localhost
   gather_facts: no
 
+  roles:
+    - retronas_systems
+
   vars:
     - my_name: "EmuDeck CIFS"
     - my_file: "install_emudeck_cifs"
@@ -37,9 +40,6 @@
       - { src: 'nintendo/superfamicom', dest: 'snesna' }
 
   tasks:
-
-  - name: "{{ my_name }} - Include systems map"
-    ansible.builtin.include_vars: "retronas_systems.yml"
 
   - name: "{{ my_name }} - Load RetroNAS config"
     ansible.builtin.include_vars: retronas_vars.yml

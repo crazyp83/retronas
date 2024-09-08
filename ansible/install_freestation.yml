@@ -5,6 +5,9 @@
 - hosts: localhost
   gather_facts: no
 
+  roles:
+    - retronas_systems
+
   vars:
     - my_name: "freestation"
     - my_file: "install_{{ my_name }}"
@@ -21,9 +24,6 @@
       - { name: "exports.d", dest: "/etc",                state: "directory", mode: "0755"}
 
   tasks:
-
-  - name: "{{ my_name }} - Include systems map"
-    ansible.builtin.include_vars: "retronas_systems.yml"
 
   - name: "{{ my_name }} - Load RetroNAS config"
     ansible.builtin.include_vars: retronas_vars.yml

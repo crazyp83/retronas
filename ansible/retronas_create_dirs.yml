@@ -1,6 +1,3 @@
-- name: "{{ my_name }} - Include systems map"
-  ansible.builtin.include_vars: "retronas_systems.yml"
-
 - name: "{{ my_name }} - Load RetroNAS config"
   ansible.builtin.include_vars: retronas_vars.yml
 

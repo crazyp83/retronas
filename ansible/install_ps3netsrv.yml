@@ -4,6 +4,9 @@
 - hosts: localhost
   gather_facts: yes
 
+  roles:
+    - retronas_systems
+
   vars:
     - my_name: "ps3netsrv"
     - my_file: "install_ps3netsrv"
@@ -44,9 +47,6 @@
       - { zones: retro, service: ps3netsrv }
 
   tasks:
-
-  - name: "{{ my_name }} - Include systems map"
-    ansible.builtin.include_vars: "retronas_systems.yml"
 
   - name: "{{ my_name }} - Load RetroNAS config"
     ansible.builtin.include_vars: retronas_vars.yml

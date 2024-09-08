@@ -6,6 +6,9 @@
 - hosts: localhost
   gather_facts: no
 
+  roles:
+    - retronas_systems
+
   vars:
     - my_name: "MiSTer CIFS"
     - my_file: "install_mister_cifs"
@@ -34,9 +37,6 @@
 
   tasks:
 
-  - name: "{{ my_name }} - Include systems map"
-    ansible.builtin.include_vars: "retronas_systems.yml"
-
   - name: "{{ my_name }} - Load RetroNAS config"
     ansible.builtin.include_vars: retronas_vars.yml
 
@@ -55,8 +55,7 @@
       group: "{{ retronas_group }}"
       state: directory
       mode: "0775"
-    with_items:
-      "{{ top_level_paths }}"
+    loop: "{{ top_level_paths }}"
     when: 
       - item.enabled is true
 
@@ -100,7 +99,7 @@
       group: "{{ item.group|default('root') }}"
       mode: "{{ item.mode|default('0644') }}"
       force: "{{ item.force|default('yes') }}"
-    with_items: "{{ templates }}"
+    loop: "{{ templates }}"
     when: dirs_only is false
     notify: 
       - "{{ my_name }} daemon-reload"

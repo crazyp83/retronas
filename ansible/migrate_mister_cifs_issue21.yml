@@ -12,6 +12,9 @@
 
 - hosts: localhost
 
+  roles:
+    - retronas_systems
+
   vars:
     - my_name: "MiSTer CIFS"
     - my_file: "install_mister_cifs"
@@ -24,9 +27,6 @@
       - { name: "wallpapers", enabled: yes,  generic: "wallpapers",  systems: no  }
 
   tasks:
-
-  - name: "{{ my_name }} - Include systems map"
-    ansible.builtin.include_vars: "retronas_systems.yml"
 
   - name: "{{ my_name }} - Load RetroNAS config"
     ansible.builtin.include_vars: retronas_vars.yml

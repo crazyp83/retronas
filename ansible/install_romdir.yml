@@ -1,6 +1,9 @@
 - hosts: localhost
   gather_facts: no
 
+  roles:
+    - retronas_systems
+
   vars:
     - my_name: "Generic ROM dir"
     - my_file: "install_romdir"

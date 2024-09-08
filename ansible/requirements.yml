@@ -1,0 +1,6 @@
+---
+roles:
+  - name: retronas_systems 
+    src: https://github.com/retronas/role_retronas_systems.git
+    scm: git 
+    version: main

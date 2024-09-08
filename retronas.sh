@@ -70,9 +70,12 @@ source $_CONFIG
 #
 bash ${PCHDIR}/update-retronas_vars.sh
 bash ${PCHDIR}/install-jq.sh
+bash ${PCHDIR}/install-requirements.sh
 #
 # END MIGRATIONS
 #
+
+exit
 
 ### source the config to update vars on first run
 source $_CONFIG

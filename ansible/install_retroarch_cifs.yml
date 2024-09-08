@@ -4,14 +4,14 @@
 - hosts: localhost
   gather_facts: no
 
+  roles:
+    - retronas_systems
+
   vars:
     - my_name: "RetroArch Based Systems CIFS"
     - my_file: "install_retroarch_cifs"
 
   tasks:
-
-  - name: "{{ my_name }} - Include systems map"
-    ansible.builtin.include_vars: "retronas_systems.yml"
 
   - name: "{{ my_name }} - Load RetroNAS config"
     ansible.builtin.include_vars: retronas_vars.yml

@@ -5,6 +5,9 @@
 - hosts: localhost
   gather_facts: no
 
+  roles:
+    - retronas_systems
+
   vars:
     - my_name: "Batocera CIFS"
     - my_file: "install_batocera_cifs"
@@ -18,9 +21,6 @@
       - { src: 'sega/megadrive', dest: 'msu-md' }
 
   tasks:
-
-  - name: "{{ my_name }} - Include systems map"
-    ansible.builtin.include_vars: "retronas_systems.yml"
 
   - name: "{{ my_name }} - Load RetroNAS config"
     ansible.builtin.include_vars: retronas_vars.yml
@@ -41,8 +41,7 @@
       group: "{{ retronas_group }}"
       state: directory
       mode: "0775"
-    with_items:
-      "{{ top_level_paths }}"
+    loop: "{{ top_level_paths }}"
     when: 
       - item.enabled is true
     notify: "{{ my_name }} - Install Samba"
@@ -70,8 +69,7 @@
       owner: "{{ retronas_user }}"
       group: "{{ retronas_group }}"
       state: link
-    with_items:
-      - "{{ internal_symlinks }}"
+    loop: "{{ internal_symlinks }}"
     notify: "{{ my_name }} - Install Samba"
 
   - name: "{{ my_name }} - configure includes file"
